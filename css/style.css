@@ -688,15 +688,20 @@
 }
 
 .country .country-item .country-flag img {
-    border: 5px solid var(--bs-white);
-    transition: 0.5s;
+    width: 100%; /* Membuat gambar mengisi kontainer */
+    height: 100%; /* Menjaga gambar proporsional */
+    object-fit: cover; /* Memastikan gambar tetap sesuai dengan bentuk lingkaran */
+    border: 5px solid var(--bs-white); /* Border putih untuk gambar */
+    border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
+    transition: 0.5s; /* Efek transisi untuk gambar */
 }
 
 .country .country-item:hover .country-flag img {
-    border: 5px solid var(--bs-white);
-    transform: rotate(360deg);
-    transition: all 0.5s ease;
+    transform: rotate(360deg); /* Menambahkan efek rotasi pada hover */
+    border: 5px solid var(--bs-white); /* Memastikan border tetap pada hover */
+    transition: all 0.5s ease; /* Memperhalus transisi saat hover */
 }
+
 
 .country .country-item .country-name {
     position: absolute;

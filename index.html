@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 
         <!-- Libraries Stylesheet -->
         <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -28,16 +30,48 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <style>
+            .custom-cursor {
+                cursor: url('img/paksofyans.svg') 8 8, auto; /* Ganti dengan path gambar PNG Anda */
+            }
+            
+            .easter-egg-active {
+                background-color: #f4e04d; /* Ubah warna background untuk indikasi Easter Egg */
+                transition: background-color 0.5s ease-in-out;
+            }
+            .cloud {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background-color: rgba(255, 255, 255, 0.6); /* Warna awan */
+                border-radius: 50%;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Efek cahaya */
+                animation: cloud-animation 2s infinite ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes cloud-animation {
+                0% {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(100px, -100px);
+                    opacity: 0;
+                }
+            }
+            
+        </style>
     </head>
 
     <body>
 
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-secondary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> -->
         <!-- Spinner End -->
 
 
@@ -56,30 +90,33 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="#index" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#about" class="nav-item nav-link">Pembimbing Siswa</a>
                         <a href="#piket" class="nav-item nav-link">Jadwal Piket</a>
                         <a href="#galeries" class="nav-item nav-link">Galery</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-bs-toggle="dropdown"><span class="dropdown-toggle">Pages</span></a>
                             <div class="dropdown-menu m-0">
-                                <a href="feature.html" class="dropdown-item">Feature</a>
-                                <a href="countries.html" class="dropdown-item">Countries</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="training.html" class="dropdown-item">Training</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
+                                <a href="galeries.html" class="dropdown-item">Galery</a>
+                                <a href="training.html" class="dropdown-item">Kelas 10</a>
+                                <a href="kelas11.html" class="dropdown-item">Kelas 11</a>
+                                <a href="404.html" class="dropdown-item">kelas 12</a>
                             </div>
                         </div>
                       
                     </div>
-                    <button class="btn btn-primary btn-md-square border-secondary mb-3 mb-md-3 mb-lg-0 me-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                    <a href="" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0">Get A Quote</a>
-                </div>
+                    <button class="btn btn-primary btn-md-square border-secondary mb-3 mb-md-3 mb-lg-0 me-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="fas fa-search"></i>
+                      </button>
+                      <a href="#" id="get-quote-btn" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0">Get A Quote</a>
+
+                      <button id="reset-cursor" style="display:none; margin-left: 10px;">Reset Cursor</button>
+                      
             </nav>
         </div>
         <!-- Navbar & Hero End -->
 
 
-        <!-- Carousel Start -->
+        <!-- Jumbotron Start -->
         <div class="carousel-header" id="index">
             <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
                 <ol class="carousel-indicators">
@@ -122,76 +159,75 @@
                 </button>
             </div>
         </div>
-        <!-- Carousel End -->
+        <!-- Jumbotron End -->
 
 
-        <!-- Modal Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h4 class="modal-title text-secondary mb-0" id="exampleModalLabel">Search by keyword</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex align-items-center">
-                        <div class="input-group w-75 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                        </div>
-                    </div>
+        <!--Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="searchModalLabel">Search Items</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="form-control" 
+                    placeholder="Type to search...">
+                  <button 
+                    class="btn btn-primary mt-2" 
+                    onclick="redirectToSearchPage()">Search</button>
+                </div>
+              </div>
             </div>
-        </div>
-        <!-- Modal Search End -->
+          </div>
+        <!-- Search End -->
 
 
 
-        <!-- About Start -->
+        <!-- Pembimbing Siswa Start -->
         <div class="container-fluid py-5" id="about">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
                         <div class="bg-light rounded">
-                            <!-- <img src="img/about-2.png" class="img-fluid w-100" style="margin-bottom: -7px;" alt="Image"> -->
                             <img src="img/paksofyan.jpeg" class="img-fluid w-100 border-bottom border-5 border-primary" style="border-top-right-radius: 300px; border-top-left-radius: 300px;" alt="Image">
                         </div>
                     </div>
                     <div class="col-lg-6 col-xl-4 wow fadeInUp taller-box" data-wow-delay="0.3s">
                         <h5 class="sub-title pe-3">Pembimbing Siswa</h5>
                         <h1 class="display-5 mb-4">Mochamad Sofyan, S.Pd.</h1>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt architecto consectetur iusto perferendis blanditiis assumenda dignissimos, commodi fuga culpa earum explicabo libero sint est mollitia saepe! Sequi asperiores rerum nemo!</p>
+                        <p class="mb-4">Mochamad Sofyan adalah pembimbing siswa yang sangat luar biasa, dikenal karena dedikasinya dalam membimbing siswa dengan penuh kesabaran dan perhatian sebagai seorang Pembina akhlak mulia. Beliau tidak hanya mengajarkan ilmu pengetahuan, tetapi juga memberikan teladan yang baik melalui sikapnya yang santun, bijaksana, dan penuh semangat. Dengan pendekatannya yang inspiratif, Mochamad Sofyan selalu mendorong siswa untuk berprestasi dan menjadi pribadi yang lebih baik.</p>
                         <div class="row gy-4 align-items-center">
-                            <a href="https://maps.app.goo.gl/yuJVBe5vDXduP9P86">
+                            <!-- Alamat Rumah -->
                             <div class="col-12 col-sm-6 d-flex align-items-center">
-                                <h5 class="ms-0">Alamat Rumah</h5>
-                                <i class="fas fa-map-marked-alt fa-3x text-secondary"></i>
-                                <p href="">Jl. Paneli No.17b, RT.03/RW.08, Ciparigi, Kec. Bogor Utara, Kota Bogor, Jawa Barat 16157</p>
-                               </a>
+                                <a href="https://maps.app.goo.gl/yuJVBe5vDXduP9P86" class="d-flex align-items-center w-100">
+                                    <i class="fas fa-map-marked-alt fa-3x text-secondary me-3"></i>
+                                    <div>
+                                        <h5 class="ms-0">Alamat Rumah</h5>
+                                        <p class="mb-0">Jl. Paneli No.17b, RT.03/RW.08, Ciparigi, Kec. Bogor Utara, Kota Bogor, Jawa Barat 16157</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-12 col-sm-6 d-flex align-items-start">
+                        
+                            <!-- Pendidik dan Pembina Karakter -->
+                            <div class="col-12 col-sm-6 d-flex align-items-center">
                                 <i class="fas fa-user-tie fa-3x me-3" style="color: #f30024;"></i>
                                 <div>
-                                    <a class="mb-1">Pembina Akhlak Mulia</a>
-                                    <a class="mb-1">Pembimbing Rayon Wikrama 5</a>
-                                    <a class="mb-0">Guru Mata Pelajaran Bahasa Inggris</a>
+                                    <h5 class="ms-0">Pendidik dan Pembina Karakter</h5>
+                                    <ul class="mb-0">
+                                        <li class="mb-1">Pembina Akhlak Mulia</li>
+                                        <li class="mb-1">Pembimbing Rayon Wikrama 5</li>
+                                        <li class="mb-0">Guru Mata Pelajaran Bahasa Inggris</li>
+                                    </ul>
                                 </div>
                             </div>
-                            
-                            <div class="col-4 col-md-3">
-                                <!-- <div class="bg-light text-center rounded p-3">
-                                    <div class="mb-2">
-                                        <i class="fas fa-ticket-alt fa-4x text-primary"></i>
-                                    </div>
-                                    <h1 class="display-5 fw-bold mb-2">34</h1>
-                                    <p class="text-muted mb-0">Years of Experience</p>
-                                </div> -->
-                            </div>
+                        
+                            <!-- Kolom Kosong dan Kontak -->
+                            <div class="col-4 col-md-3"></div>
                             <div class="col-8 col-md-9">
-                                <!-- <div class="mb-5">
-                                    <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> Offer 100 % Genuine Assistance</p>
-                                    <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> It’s Faster & Reliable Execution</p>
-                                    <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> Accurate & Expert Advice</p>
-                                </div> -->
                                 <div class="d-flex flex-wrap">
                                     <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">
                                         <a href="" class="position-relative wow tada" data-wow-delay=".9s">
@@ -208,14 +244,15 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
-        <!-- About End -->
+        <!-- Pembimbing Siswa End -->
 
 
-        <!-- Counter Facts Start -->
+        <!-- Anggota Rayon Start -->
         <div class="container-fluid counter-facts py-5">
             <div class="container py-5">
                 <div class="row g-4">
@@ -278,10 +315,10 @@
                 </div>
             </div>
         </div>
-        <!-- Counter Facts End -->
+        <!-- Anggota Rayon End -->
 
 
-        <!-- Services Start -->
+        <!-- Struktur Rayon Start -->
         <div class="container-fluid service overflow-hidden pt-5">
             <div class="container py-5">
                 <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -289,35 +326,10 @@
                         <h5 class="sub-title text-primary px-3">Wikrama 5</h5>
                     </div>
                     <h1 class="display-5 mb-4">Struktur Rayon</h1>
-
                 </div>
-                <div class="row g-4">
-                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item">
-                            <div class="service-inner">
-                                <div class="service-img">
-                                    <img src="img/faisal.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                </div>
-                                <div class="service-title">
-                                    <div class="service-title-name">
-                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
-                                            <a href="#" class="h4 text-white mb-0">Ketua Rayon</a>
-                                        </div>
-                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Explore More</a>
-                                    </div>
-                                    <div class="service-content pb-4">
-                                        <a href="#"><h4 class="text-white mb-4 py-3">Ketua Rayon</h4></a>
-                                        <div class="px-4">
-                                            <li>Rombel : PPLG XI-1                                </li>
-                                            <li>NIS : 12309848</li>
-                                            <li>Alamat :--------------------------------------------------------------</li>
-                                            <a class="btn btn-primary border-secondary rounded-pill py-3 px-5" href="#">Explore More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        
+                <!-- Pembimbing Siswa -->
+                <div class="d-flex justify-content-center align-items-center mb-4">
                     <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="service-item">
                             <div class="service-inner">
@@ -334,7 +346,7 @@
                                     <div class="service-content pb-4">
                                         <a href="#"><h4 class="text-white mb-4 py-3">Pembimbing Siswa</h4></a>
                                         <div class="px-4">
-                                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia fugit dolores nesciunt adipisci obcaecati veritatis cum, ratione aspernatur autem velit.</p>
+                                            <p class="mb-4">Pembimbing Siswa Rayon Wikrama 5.</p>
                                             <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Explore More</a>
                                         </div>
                                     </div>
@@ -342,7 +354,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                </div>
+        
+                <!-- Ketua dan Wakil Ketua -->
+                <div class="d-flex justify-content-center align-items-center mb-4 gap-5">
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/faisal.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Ketua Rayon</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Explore More</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Ketua Rayon</h4></a>
+                                        <div class="px-4">
+                                            <ul class="text-start">
+                                                <li><b>Nama:</b> Muhammad Faisal Maliki</li>
+                                                <li><b>Rombel:</b> PPLG XI-1</li>
+                                                <li><b>NIS:</b> 12309848</li>
+                                                <li><b>Alamat:</b> jln.pramuka raya Rt.01/11 kec. Pancoran mas kel. Mampang kota. Depok Prov. Jabar</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="service-item">
                             <div class="service-inner">
                                 <div class="service-img">
@@ -356,18 +401,55 @@
                                         <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Explore More</a>
                                     </div>
                                     <div class="service-content pb-4">
-                                        <a href="#"><h4 class="text-white mb-4 py-3">Diplometic Visa</h4></a>
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Wakil Ketua Rayon</h4></a>
                                         <div class="px-4">
-                                            <li>Rombel : MPLB ---                              </li>
-                                            <li>NIS : ------</li>
-                                            <li>Alamat :--------------------------------------------------------------</li>                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Explore More</a>
+                                            <ul class="text-start">
+                                                <li><b>Nama:</b> Josepha Anania Siman</li>
+                                                <li><b>Rombel:</b> MPLB XI-2</li>
+                                                <li><b>NIS:</b> 12309690</li>
+                                                <li><b>Alamat:</b>Jl Kp Palasari</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                </div>
+        
+                <!-- Sekretaris -->
+                <div class="d-flex justify-content-center align-items-center mb-4 gap-3">
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item">
+                            <div class="service-inner">
+                                <div class="service-img">
+                                    <img src="img/jasmine.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                </div>
+                                <div class="service-title">
+                                    <div class="service-title-name">
+                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+                                            <a href="#" class="h4 text-white mb-0">Sekretaris</a>
+                                        </div>
+                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Explore More</a>
+                                    </div>
+                                    <div class="service-content pb-4">
+                                        <a href="#"><h4 class="text-white mb-4 py-3">Sekretaris</h4></a>
+                                        <div class="px-4">
+                                            <ul class="text-start">
+                                                <li><b>Nama:</b> Rr. Jasmine Meuthia Hanun Nugroho </li>
+                                                <li><b>Rombel:</b> PPLG XI-3</li>
+                                                <li><b>NIS:</b> 12310025</li>
+                                                <li><b>Alamat:</b> Casa Gardenia Cilebut blok M no.16 </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                <!-- Bendahara -->
+                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="service-item">
                             <div class="service-inner">
                                 <div class="service-img">
@@ -383,10 +465,12 @@
                                     <div class="service-content pb-4">
                                         <a href="#"><h4 class="text-white mb-4 py-3">Bendahara 1</h4></a>
                                         <div class="px-4">
-                                            <li>Rombel : PPLG XI-1                              </li>
-                                            <li>NIS : ------</li>
-                                            <li>Alamat :--------------------------------------------------------------</li>       
-                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Explore More</a>
+                                            <ul class="text-start">
+                                                <li><b>Nama:</b> Shayma Choula Febryna </li>
+                                                <li><b>Rombel:</b> PPLG XI-1</li>
+                                                <li><b>NIS:</b> 12310048</li>
+                                                <li><b>Alamat:</b> Bukit Rancamaya Residence Jl.Cendana 5 blok B 5/10 Rt 03 Rw 06 Kel.Ciherang Pondok Kec.Caringin Kab.Bogor, Jawa Barat, Kab. Bogor, Caringin </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -394,32 +478,6 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item">
-                            <div class="service-inner">
-                                <div class="service-img">
-                                    <img src="img/jasmine.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                </div>
-                                <div class="service-title">
-                                    <div class="service-title-name">
-                                        <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
-                                            <a href="#" class="h4 text-white mb-0">Sekertaris</a>
-                                        </div>
-                                        <a class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4" href="#">Explore More</a>
-                                    </div>
-                                    <div class="service-content pb-4">
-                                        <a href="#"><h4 class="text-white mb-4 py-3">Sekertaris</h4></a>
-                                        <div class="px-4">
-                                            <li>Rombel : PPLG ---                             </li>
-                                            <li>NIS : ------</li>
-                                            <li>Alamat :--------------------------------------------------------------</li>       
-                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Explore More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="service-item">
                             <div class="service-inner">
                                 <div class="service-img">
@@ -435,10 +493,12 @@
                                     <div class="service-content pb-4">
                                         <a href="#"><h4 class="text-white mb-4 py-3">Bendahara 2</h4></a>
                                         <div class="px-4">
-                                            <li>Rombel : PPLG XI-5                              </li>
-                                            <li>NIS : ------</li>
-                                            <li>Alamat :--------------------------------------------------------------</li>       
-                                            <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5" href="#">Explore More</a>
+                                            <ul class="text-start">
+                                                <li><b>Nama:</b> Tegar Badruzzaman Zulkifli </li>
+                                                <li><b>Rombel:</b> PPLG XI-5</li>
+                                                <li><b>NIS:</b> 123-----</li>
+                                                <li><b>Alamat:</b>Cibedug </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -448,11 +508,12 @@
                 </div>
             </div>
         </div>
-        <!-- Services End -->
+        
+        <!-- Struktur Rayon End -->
 
 
 
-        <!-- Features Start -->
+        <!-- Jadwal Piket Start -->
         <div class="container-fluid features overflow-hidden py-5" id="piket">
             <div class="container">
                 <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -466,18 +527,18 @@
                     <div class="row g-4 justify-content-center text-center">
                         <!-- Senin -->
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="feature-item text-center p-5 shadow-lg rounded">
+                            <div class="feature-item text-start p-5 shadow-lg rounded">
                                 <h3 class="mb-4 fw-bold">Senin</h3>
-                                <ul class="list-unstyled fs-5">
-                                    <li class="mb-2">Zalova</li>
-                                    <li class="mb-2">Mitha</li>
-                                    <li class="mb-2">Aznil</li>
-                                    <li class="mb-2">Falisha</li>
-                                    <li class="mb-2">Valensio</li>
-                                    <li class="mb-2">Adriantoana</li>
-                                    <li class="mb-2">Habib</li>
+                                <ul class=" fs-5">
+                                    <li class="mb-2">Zalovaurora Ayunei Heren (ova)</li>
+                                    <li class="mb-2">Dyah Primi Paramitha (mitha)</li>
+                                    <li class="mb-2">Aznil Demina Khonsaa (aznil) </li>
+                                    <li class="mb-2">Falisha Putri Faizal (Falisha)</li>
+                                    <li class="mb-2">Valensio Christian Samuel (Valen)</li>
+                                    <li class="mb-2">Adriantoana WB</li>
+                                    <li class="mb-2">Habiburramdhan Lesmana (Habib)</li>
                                     <li class="mb-2">James</li>
-                                    <li class="mb-2">Hazel</li>
+                                    <li class="mb-2">Hazel Nabil Ibrahimovic    (Hazel)</li>
                                 </ul>
                                 <a class="btn btn-secondary btn-lg rounded-pill mt-3" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
                             </div>
@@ -485,17 +546,17 @@
                 
                         <!-- Selasa -->
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="feature-item text-center p-5 shadow-lg rounded">
+                            <div class="feature-item text-start p-5 shadow-lg rounded">
                                 <h3 class="mb-4 fw-bold">Selasa</h3>
-                                <ul class="list-unstyled fs-5">
-                                    <li class="mb-2">Anania</li>
-                                    <li class="mb-2">Azurra</li>
-                                    <li class="mb-2">Shayma</li>
-                                    <li class="mb-2">Reihan</li>
-                                    <li class="mb-2">Imanuel</li>
-                                    <li class="mb-2">Husni</li>
-                                    <li class="mb-2">Ryan</li>
-                                    <li class="mb-2">Salman</li>
+                                <ul class=" fs-5">
+                                    <li class="mb-2">Josepha Anania Siman (ana)</li>
+                                    <li class="mb-2">Azzahra Aprilliana Achdiat (zura)</li>
+                                    <li class="mb-2">Shayma Choula Febryna (shayma)</li>
+                                    <li class="mb-2">Reihanando (Reihan)</li>
+                                    <li class="mb-2">Imanuel Adhie Noegroho (Imanuel)</li>
+                                    <li class="mb-2">Muhamad Husni Mubarok (Husni)</li>
+                                    <li class="mb-2">Ryan Achmad Nasrullah (Ryan)</li>
+                                    <li class="mb-2">Muhamad Salman Fahrezi (Salman)</li>
                                 </ul>
                                 <a class="btn btn-secondary btn-lg rounded-pill mt-3" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
                             </div>
@@ -503,18 +564,18 @@
                 
                         <!-- Rabu -->
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="feature-item text-center p-5 shadow-lg rounded">
+                            <div class="feature-item text-start p-5 shadow-lg rounded">
                                 <h3 class="mb-4 fw-bold">Rabu</h3>
-                                <ul class="list-unstyled fs-5">
-                                    <li class="mb-2">Deka</li>
-                                    <li class="mb-2">Halza</li>
-                                    <li class="mb-2">Nadifaa</li>
-                                    <li class="mb-2">Keshia</li>
-                                    <li class="mb-2">Andhika</li>
-                                    <li class="mb-2">Pradipa</li>
-                                    <li class="mb-2">Tyo</li>
-                                    <li class="mb-2">Revianus</li>
-                                    <li class="mb-2">Farel</li>
+                                <ul class="fs-5">
+                                    <li class="mb-2">Deka Amesia (Deka)</li>
+                                    <li class="mb-2">Halza Naqilah Shifa Al Rusdi (Halza)</li>
+                                    <li class="mb-2">Nadiifa Syafa Shalimar (Nadiiifa)</li>
+                                    <li class="mb-2">Keshia Rizkia Visiani Alpharina Handian (Keshia)</li>
+                                    <li class="mb-2">Andika Hilmy (Andika)</li>
+                                    <li class="mb-2">Muhammad Pradipa (dipa)</li>
+                                    <li class="mb-2">Muhammad Tyo Nugraha (tyo)</li>
+                                    <li class="mb-2">Revianus (revi)</li>
+                                    <li class="mb-2">Muhammad Farel Ristova Koras (Farel)</li>
                                 </ul>
                                 <a class="btn btn-secondary btn-lg rounded-pill mt-3" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
                             </div>
@@ -525,16 +586,16 @@
                     <div class="row g-4 justify-content-center text-center mt-4">
                         <!-- Kamis -->
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="feature-item text-center p-5 shadow-lg rounded">
+                            <div class="feature-item text-start p-5 shadow-lg rounded">
                                 <h3 class="mb-4 fw-bold">Kamis</h3>
-                                <ul class="list-unstyled fs-5">
-                                    <li class="mb-2">Jasmine</li>
-                                    <li class="mb-2">Jeanecha</li>
-                                    <li class="mb-2">Nararya</li>
-                                    <li class="mb-2">Bintang</li>
-                                    <li class="mb-2">Fajar</li>
-                                    <li class="mb-2">Umbu</li>
-                                    <li class="mb-2">Andika Laang</li>
+                                <ul class="fs-5">
+                                    <li class="mb-2">Rr. Jasmine Meuthia Hanun Nugroho (Jasmine)</li>
+                                    <li class="mb-2">Jeanecha Kristin</li>
+                                    <li class="mb-2">Nararya Alif Prayata (arya)</li>
+                                    <li class="mb-2">Bintang Brandon Alexander (bintang)</li>
+                                    <li class="mb-2">Fajar Nurrahman (fajar)</li>
+                                    <li class="mb-2">Umbu Azazia (umbu)</li>
+                                    <li class="mb-2">Andika Laang Ibau</li>
                                 </ul>
                                 <a class="btn btn-secondary btn-lg rounded-pill mt-3" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
                             </div>
@@ -542,17 +603,17 @@
                 
                         <!-- Jumat -->
                         <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="feature-item text-center p-5 shadow-lg rounded">
+                            <div class="feature-item text-start p-5 shadow-lg rounded">
                                 <h3 class="mb-4 fw-bold">Jumat</h3>
-                                <ul class="list-unstyled fs-5">
-                                    <li class="mb-2">Azzahra</li>
-                                    <li class="mb-2">Maylica</li>
-                                    <li class="mb-2">Yasmin</li>
-                                    <li class="mb-2">Adnan</li>
-                                    <li class="mb-2">Tegar</li>
-                                    <li class="mb-2">Fisal</li>
-                                    <li class="mb-2">Fadli</li>
-                                    <li class="mb-2">Haikal</li>
+                                <ul class="fs-5">
+                                    <li class="mb-2">Azzahra Aprilliana Achdiat (zahra)</li>
+                                    <li class="mb-2"> Maylicca Namira Putri (Maylica)</li>
+                                    <li class="mb-2">Yasmin Qurrota A'yuni (Yasmin)</li>
+                                    <li class="mb-2">Adnan Anugrah (Adnan)</li>
+                                    <li class="mb-2">Tegar Badruzzaman Zulkifli (Tegar)</li>
+                                    <li class="mb-2">Muhammad Faisal Maliki (Faisal)</li>
+                                    <li class="mb-2">Fadli Firdaus (Fadli)</li>
+                                    <li class="mb-2">Haikal Abdurrahman (Haikal)</li>
                                 </ul>
                                 <a class="btn btn-secondary btn-lg rounded-pill mt-3" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
                             </div>
@@ -563,7 +624,7 @@
                 
                 
                   
-        <!-- Features End -->
+        <!-- Jadwal Piket End -->
 
 
 
@@ -574,7 +635,7 @@
                     <div class="sub-style">
                         <h5 class="sub-title text-primary px-3">Galeries</h5>
                     </div>
-                    <h1 class="display-5 mb-4">Kegiatan-Kegiatan Rayon Wikrama 5</h1>
+                    <h1 class="display-6 mb-4">Kegiatan-Kegiatan Rayon Wikrama 5</h1>
                 </div>
                 <div class="row g-4 text-center">
                     <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.1s">
@@ -586,7 +647,7 @@
                                 <img src="img/ultah.jpg" class="img-fluid rounded-circle" alt="Image">
                             </div>
                             <div class="country-name">
-                                <a href="#" class="text-white fs-4">Hari Ulang Tahun Pak Sofyan</a>
+                                <a href="#" class="text-white fs-4">Peringatan Hari guru</a>
                             </div>
                         </div>
                     </div>
@@ -599,7 +660,7 @@
                                 <img src="img/kumpul.jpg" class="img-fluid rounded-circle" alt="Image">
                             </div>
                             <div class="country-name">
-                                <a href="#" class="text-white fs-4">Agenda Kumpul Rayon</a>
+                                <a href="#" class="text-white fs-4">Kegiatan Kumpul Rayon</a>
                             </div>
                         </div>
                     </div>
@@ -612,7 +673,7 @@
                                 <img src="img/cwk.jpg" class="img-fluid rounded-circle" alt="Image">
                             </div>
                             <div class="country-name">
-                                <a href="#" class="text-white fs-4">Perempuan Wikrama 5</a>
+                                <a href="#" class="text-white fs-4">The girl from Wikrama 5</a>
                             </div>
                         </div>
                     </div>
@@ -625,7 +686,7 @@
                                 <img src="img/batik.jpg" class="img-fluid rounded-circle" alt="Image">
                             </div>
                             <div class="country-name">
-                                <a href="#" class="text-white fs-4">Hari Batik Nasional </a>
+                                <a href="#" class="text-white fs-4">Peringatan Hari Batik Nasional </a>
                             </div>
                         </div>
                     </div>
@@ -638,7 +699,7 @@
                                 <img src="img/jumatan.jpg" class="img-fluid rounded-circle" alt="Image" width="100px">
                             </div>
                             <div class="country-name">
-                                <a href="#" class="text-white fs-4">Selesai Sholat Jumat bagi Putra </a>
+                                <a href="#" class="text-white fs-4">Kegiatan Sholat Jumat bagi Putra </a>
                             </div>
                         </div>
                     </div>
@@ -677,12 +738,12 @@
                                 <img src="img/menjenguk.jpg" class="img-fluid rounded-circle" alt="Image">
                             </div>
                             <div class="country-name">
-                                <a href="#" class="text-white fs-4"> Menjenguk Teman yang sedang sakit</a>
+                                <a href="#" class="text-white fs-4"> Menjenguk Teman</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
-                        <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">More Countries</a>
+                        <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="galeries.html">More Galeries</a>
                     </div>
                 </div>
             </div>
@@ -761,7 +822,7 @@
                         <div class="testimonial-content p-4 mb-5">
                             <p class="fs-5 mb-0">
                                 Kunjungi website resmi Rayon untuk informasi lengkap dan kegiatan terbaru.
-                                <a href="https://www.rayonwikrama5.com" target="_blank" class="text-primary fw-bold">
+                                <a href="https://rayonwikrama5.vercel.app/" target="_blank" class="text-primary fw-bold">
                                     Klik di sini untuk Website Rayon.
                                 </a>
                             </p>
@@ -833,6 +894,7 @@
                                 <p class="text-white-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, veritatis.</p>
                                 <a class="btn btn-secondary rounded-pill text-white p-0" href="#">Read More <i class="fa fa-arrow-right"></i></a>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
@@ -944,12 +1006,12 @@
                 </div>
             </div>
         </div>
-        <!-- Contact End -->
+        < Contact End -->
 
 
         <!-- Footer Start -->
-<!--
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+
+        <!-- <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-6 col-xl-3">
@@ -989,6 +1051,7 @@
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-secondary mb-4">Our Services</h4>
                             <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Business</a>
+                            
                             <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Evaluation</a>
                             <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Migrate</a>
                             <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Study</a>
@@ -1009,29 +1072,29 @@
                 </div>
             </div>
         </div>
-         Footer End -->
+    <    Footer End -->
 
-        <!--  
-        < Copyright Start -->
-        <!-- <div class="container-fluid copyright py-4">
+          
+        <!--  Copyright Start -->
+         <!-- <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
                         <span class="text-white"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-white">
-                        *** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        *** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        <!-- Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                    </div>
+                        <!--  Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>  -->
+                    <!-- </div>
                 </div>
             </div>
-        </div> -->
+        </div>  --> 
+
         <!-- Copyright End -->
             <!-- Topbar Start -->
-        <!-- <div class="container-fluid bg-primary px-5 d-none d-lg-block"> -->
-            <!-- <div class="row gx-0 align-items-center">
+        <!-- <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+             <div class="row gx-0 align-items-center">
                 <div class="col-lg-5 text-center text-lg-start mb-lg-0">
                     <div class="d-flex">
                         <a href="#" class="text-muted me-4"><i class="fas fa-envelope text-secondary me-2"></i>Example@gmail.com</a>
@@ -1056,8 +1119,8 @@
                 </div>
             </div>
         </div>
-     -->
-
+      -->
+ 
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
@@ -1071,10 +1134,170 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        function countWordOccurrences(page, word) {
+            // Simulate page content (you would replace this with the actual content of the page)
+            const pageContent = page === 'kelas 11' ? document.body.innerText : document.body.innerText;
+    
+            // Count the occurrences of the word in the page content
+            const regex = new RegExp(word, 'gi');
+            const matches = pageContent.match(regex);
+            return matches ? matches.length : 0;
+        }
+        async function redirectToSearchPage() {
+            const searchValue = document.getElementById('searchInput').value.trim();
+        
+            if (searchValue) {
+                const searchQuery = encodeURIComponent(searchValue);
+        
+                // Fetch konten dari kedua halaman
+                const [kelas11Content, trainingContent] = await Promise.all([
+                    fetchContent('kelas11.html'),
+                    fetchContent('training.html')
+                ]);
+        
+                // Hitung jumlah kemunculan kata di masing-masing halaman
+                const occurrencesKelas11 = countWordOccurrences(kelas11Content, searchValue);
+                const occurrencesTraining = countWordOccurrences(trainingContent, searchValue);
+        
+                // Tampilkan hasil pencarian dengan SweetAlert2
+                Swal.fire({
+                    title: 'Search Results',
+                    html: `<p>The search term <strong>"${searchValue}"</strong> was found:</p>
+                           <ul style="text-align: left;">
+                               <li><strong>On kelas11.html:</strong> ${occurrencesKelas11} times</li>
+                               <li><strong>On training.html:</strong> ${occurrencesTraining} times</li>
+                           </ul>`,
+                    icon: 'info',
+                    showCancelButton: true,
+                    cancelButtonText: 'Go to Kelas 10',
+                    confirmButtonText: 'Go to Kelas 11',
+                }).then((result) => {
+                    // Redirect ke halaman sesuai tombol yang dipilih
+                    if (result.isConfirmed) {
+                        window.location.href = `kelas11.html?search=${searchQuery}`;
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        window.location.href = `training.html?search=${searchQuery}`;
+                    } else {
+                        window.location.href = `index.html?search=${searchQuery}`;
+                    }
+                }); 
+            } else {
+                // Tampilkan alert jika input kosong
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Please enter a search term.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+        
+        // Fungsi untuk mengambil konten dari URL tertentu
+        async function fetchContent(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    console.error(`Failed to fetch ${url}:`, response.statusText);
+                    return '';
+                }
+                return await response.text();
+            } catch (error) {
+                console.error(`Error fetching ${url}:`, error);
+                return '';
+            }
+        }
+        
+        // Fungsi untuk menghitung jumlah kata dalam konten
+        function countWordOccurrences(content, searchValue) {
+            const regex = new RegExp(`\\b${searchValue}\\b`, 'gi'); // Cari kata persis
+            const matches = content.match(regex);
+            return matches ? matches.length : 0;
+        }
+
+        document.getElementById('get-quote-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            let count = 0;
+            let easterEggActivated = false; // Variabel untuk melacak status Easter Egg
+        
+            // Fungsi untuk menampilkan SweetAlert2 berulang kali
+            function showAlert() {
+                if (count < 10) {
+                    Swal.fire({
+                        title: 'Apakah Anda ingin melanjutkan?',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Tidak',
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            count++;
+                            showAlert(); // Looping ulang jika user memilih 'Ya'
+                        } else {
+                            Swal.fire('Proses dibatalkan!');
+                        }
+                    });
+                } else {
+                    // Setelah 10 kali, tampilkan tombol Easter Egg
+                    Swal.fire({
+                        title: 'Selamat! Anda telah mencapai 10 kali!',
+                        text: 'Klik tombol berikut untuk mendapatkan Easter Egg!',
+                        confirmButtonText: 'Gunakan Easter Egg',
+                    }).then(() => {
+                        // Ganti kursor dengan gambar yang diinginkan
+                        document.body.classList.add('custom-cursor');
+                        
+                        // Tandai Easter Egg telah diaktifkan
+                        easterEggActivated = true;
+                        
+                        // Tampilkan tombol Reset Cursor
+                        document.getElementById('reset-cursor').style.display = 'inline-block';
+                        
+                        Swal.fire('Easter Egg berhasil diaktifkan!');
+                    });
+                }
+            }
+        
+            // Mulai dengan menampilkan SweetAlert pertama kali
+            showAlert();
+        
+            // Fungsi untuk menambahkan efek awan hanya jika Easter Egg aktif
+            document.addEventListener("mousemove", function(e) {
+                if (easterEggActivated) { // Pastikan hanya aktif setelah Easter Egg diaktifkan
+                    let cloud = document.createElement("div");
+                    cloud.classList.add("cloud");
+                    cloud.style.left = `${e.pageX - 15}px`; // Sesuaikan posisi dan ukuran awan
+                    cloud.style.top = `${e.pageY - 15}px`;
+                    
+                    document.body.appendChild(cloud);
+                    
+                    setTimeout(() => {
+                        cloud.remove();
+                    }, 2000); // Hapus setelah animasi selesai (2 detik)
+                }
+            });
+        
+            // Fungsi untuk mereset kursor dan menghilangkan efek Easter Egg
+            document.getElementById('reset-cursor').addEventListener('click', function() {
+                document.body.classList.remove('custom-cursor');
+                easterEggActivated = false;
+                
+                // Sembunyikan tombol Reset Cursor setelah digunakan
+                document.getElementById('reset-cursor').style.display = 'none';
+                
+                Swal.fire('Easter Egg telah dihapus!');
+            });
+        });
+
+    </script>
+    
     </body>
 
 </html>

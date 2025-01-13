@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Wikrama 5-Web</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            .img-fixed {
+                width: 500px; /* Set a fixed width */
+                height: 500px; /* Set a fixed height */
+                object-fit: cover; /* Ensures the image fits the fixed size without distortion */
+            }
+            .btn-read-more {
+                display: inline-block; /* Supaya mudah diposisikan */
+                padding: 10px 20px; /* Ukuran padding tombol */
+                color: #fff; /* Warna teks */
+                background-color: #1179f9; /* Warna latar belakang hijau */
+                border: none; /* Hilangkan border */
+                border-radius: 30px; /* Bentuk bulat pada tombol */
+                text-align: center; /* Teks di tengah */
+                font-size: 16px; /* Ukuran font */
+                font-weight: bold; /* Teks lebih tebal */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+                transition: all 0.3s ease; /* Animasi pada hover */
+                cursor: pointer; /* Ubah kursor jadi pointer */
+                margin: 0 auto; /* Pastikan tombol ada di tengah */
+                display: flex; /* Agar bisa diatur dengan mudah */
+                align-items: center; /* Posisikan teks vertikal di tengah */
+                justify-content: center; /* Teks horizontal di tengah */
+            }
+        
+            .btn-read-more:hover {
+                background-color: #1411bd; /* Ubah warna pada hover */
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan pada hover */
+            }
+        
+            .btn-read-more i {
+                margin-left: 8px; /* Spasi kecil antara teks dan ikon */
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-secondary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+     
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid nav-bar p-0">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="display-5 text-secondary m-0">
+                        <a href="index.html">Rayon Wikrama 5</a>
+                    </h1>
+                                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">home</a>
+                        <a href="training.html" class="nav-item nav-link">Kelas 10</a>
+                        <a href="kelas11.html" class="nav-item nav-link ">Kelas 11</a>
+                        <a href="404.html" class="nav-item nav-link">Kelas 12</a>               
+                    </div>
+                    <button class="btn btn-primary btn-md-square border-secondary mb-3 mb-md-3 mb-lg-0 me-3" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <i class="fas fa-search"></i>
+                      </button>
+                                          <a href="" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0">Get A Quote</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        <!--Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="searchModalLabel">Search Items</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="form-control" 
+                    placeholder="Type to search...">
+                  <button 
+                    class="btn btn-primary mt-2" 
+                    onclick="redirectToSearchPage()">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- Search End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">PROFILE CLASS 11</h1>
+                <!-- <ol class="breadcrumb justify-content-center text-white mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                    <li class="breadcrumb-item active text-secondary">Countries</li>
+                </ol>     -->
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- Countries We Offer Start -->
+        <!-- <div class="container-fluid country overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="section-title text-center wow fadeInUp" data-wow-delay="0.1s" style="margin-bottom: 70px;">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">COUNTRIES WE OFFER</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">Immigration & visa services following Countries</h1>
+                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
+                </div>
+                <div class="row g-4 text-center">
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-1.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/brazil.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">Brazil</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-2.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/india.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">india</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-3.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/usa.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">New York</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="country-item">
+                            <div class="rounded overflow-hidden">
+                                <img src="img/country-4.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            </div>
+                            <div class="country-flag">
+                                <img src="img/italy.jpg" class="img-fluid rounded-circle" alt="Image">
+                            </div>
+                            <div class="country-name">
+                                <a href="#" class="text-white fs-4">Italy</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">More Countries</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Countries We Offer End -->
+
+        <!-- Counter Facts Start -->
+        <!-- <div class="container-fluid counter-facts overflow-hidden py-5">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-passport"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Visa Categories</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">31</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Team Members</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">377</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Visa Process</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">4.9</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">K</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="counter">
+                            <div class="counter-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="counter-content">
+                                <h3>Success Rates</h3>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value" data-toggle="counter-up">98</span>
+                                    <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Counter Facts End -->
+
+        <!-- Training Start -->
+        <div class="container-fluid training overflow-hidden bg-light py-5">
+            <div class="container py-5">
+                <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">Wikrama 5</h5>
+                    </div>
+                    <h1 class="display-5 mb-4">Anggota Rayon Wikrama 5 kelas 11</h1>
+                    <p class="mb-0">Para pejuang masa depan wikrama dari angkatan ke-28</p>
+                </div>
+        
+                <!-- Filter Options -->
+                <div class="text-center mb-4">
+                    <button class="btn btn-primary" onclick="filterItems('all')">All</button>
+                    <button class="btn btn-primary" onclick="filterItems('male')">Male</button>
+                    <button class="btn btn-primary" onclick="filterItems('female')">Female</button>
+                </div>
+        
+                <div class="row g-4">
+                    <!-- Item 1 (Male) -->
+                    <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                        <div class="training-inner">
+                            <img src="img/ana2.jpg" class="img-fixed w-100 rounded" alt="Image">
+                            <div class="training-title-name">
+                                <a href="#" class="h4 text-white mb-0">Josepha Anania Siman </a>
+                            </div>
+                        </div>
+                        <div class="training-content bg-secondary rounded-bottom p-4">
+                            <a href="#"><h4 class="text-white text-center">Josepha Anania Siman </h4></a>
+                            <ul class="text-start text-white">
+                                <li><b>NIS : </b>12309690</li>
+                                <li><b>Rombel : </b>PMN XI-1 </li>
+                                <li><b>TTL : </b>Sentuk, 06 Juli 2008</li>
+                                <li><b>Alamat Lengkap : </b>Jl Kp Palasari</li>
+                            </ul>
+                            <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                Read More <i class="fa fa-arrow-right"></i>
+                            </button>                          </div>
+                    </div>
+                    
+        
+                    <!-- Item 2 (Female) -->
+                    <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                        <div class="training-inner">
+                            <img src="img/jasmine.jpg" class="img-fixed w-100 rounded" alt="Image">
+                            <div class="training-title-name">
+                                <a href="#" class="h4 text-white mb-0">Rr. Jasmine Meuthia Hanun Nugroho </a>
+                            </div>
+                        </div>
+                        <div class="training-content bg-secondary rounded-bottom p-4">
+                            <a href="#"><h4 class="text-white text-center">Rr. Jasmine Meuthia Hanun Nugroho </h4></a>
+                            <ul class="text-start text-white">
+                                <li><b>NIS : </b>12310025</li>
+                                <li><b>Rombel : </b>PPLG XI-3</li>
+                                <li><b>TTL : </b>Bengkulu, 3 Agustus 2008</li>
+                                <li><b>Alamat Lengkap : </b>Casa Gardenia Cilebut blok M no.16 </li>
+                            </ul>
+                            <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                Read More <i class="fa fa-arrow-right"></i>
+                            </button>                           </div>
+                    </div>
+                    
+                    
+                    <!-- Item 3 (Male) -->
+                    <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                        <div class="training-inner">
+                            <img src="img/imanuel.jpg" class="img-fixed w-100 rounded" alt="Image">
+                            <div class="training-title-name">
+                                <a href="#" class="h4 text-white mb-0">Imanuel Adhie Noegroho</a>
+                            </div>
+                        </div>
+                        <div class="training-content bg-secondary rounded-bottom p-4">
+                            <a href="#"><h4 class="text-white text-center">Imanuel Adhie Noegroho</h4></a>
+                            <ul class="text-start text-white">
+                                <li><b>NIS : </b>12309679</li>
+                                <li><b>Rombel : </b>DKV XI-3</li>
+                                <li><b>TTL : </b>Palembang, 30-06-2008</li>
+                                <li><b>Alamat Lengkap : </b>Tajur kosan kongsi sidang sari </li>
+                            </ul>
+                            <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                Read More <i class="fa fa-arrow-right"></i>
+                            </button>                        </div>
+                    </div>
+                        <!-- Item 4 (Female) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/shayma2.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Shayma Choula Febryna </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Shayma Choula Febryna</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12310048</li>
+                                    <li><b>Rombel : </b>PPLG XI-1</li>
+                                    <li><b>TTL : </b>Sukabumi, 24-02-2008</li>
+                                    <li><b>Alamat Lengkap : </b>Bukit Rancamaya Residence Jl.Cendana 5 blok B 5/10 Rt 03 Rw 06 Kel.Ciherang Pondok Kec.Caringin Kab.Bogor, Jawa Barat, Kab. Bogor, Caringin</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                        <!-- Item 5 (Female) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/aznil.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Aznil Demina Khonsaa </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Aznil Demina Khonsaa</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309559</li>
+                                    <li><b>Rombel : </b>KLN XI-2</li>
+                                    <li><b>TTL : </b>Garut 09 juni 2007</li>
+                                    <li><b>Alamat Lengkap : </b>Graha Arradea, Tahap 2 blok JA 19 Ciherang, Dramaga</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                        <!-- Item 6 (Female) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/KUNING.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Falisha Putri Faizal </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Falisha putri Faizal </h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309636</li>
+                                    <li><b>Rombel : </b>HTL XI-1</li>
+                                    <li><b>TTL : </b>Bogor 12 juli 2008</li>
+                                    <li><b>Alamat Lengkap : </b>Bojong Gede Green Park blok c2</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                        <!-- Item 7 (male) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/reihanando.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Reihanando </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Reihanando </h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309998</li>
+                                    <li><b>Rombel : </b>TJKT XI-2 </li>
+                                    <li><b>TTL : </b>Tenggarong 30-07-2007</li>
+                                    <li><b>Alamat Lengkap : </b>Kalimantan Timur, tukung ritan,kec tabang</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                        <!-- Item 8(male) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/fajar.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Fajar Nurrahman  </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Fajar Nurrahman  </h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309635</li>
+                                    <li><b>Rombel : </b>KLN XI-1  </li>
+                                    <li><b>TTL : </b>Bogor, 20 Juni 2007</li>
+                                    <li><b>Alamat Lengkap : </b>Bilabong Permai Blok C2B No.19</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                        <!-- Item 9 (female) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/mitha.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Dyah Primi Paramitha </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Dyah Primi Paramitha </h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309613</li>
+                                    <li><b>Rombel : </b>DKV XI-3   </li>
+                                    <li><b>TTL : </b>Bogor, 08-10-2007</li>
+                                    <li><b>Alamat Lengkap : </b>Jl. Duku Raya RT. 1 RW. 6, No. 12, Kel. Baranangsiang, Kec. Kota Bogor Timur </li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                        <!-- Item 10 (male) -->
+                        <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/samuel.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Valensio Christian Samuel</a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Valensio Christian Samuel</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12310095</li>
+                                    <li><b>Rombel : </b>PPLG XI-3 </li>
+                                    <li><b>TTL : </b>Bogor, 03-03-2008</li>
+                                    <li><b>Alamat Lengkap : </b>Griya soka 1 jalan durian 5 blok m28 Cimahpar Sukaraja bogor</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 11 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/amelia.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Amelia Putri Purwanto  </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Amelia Putri Purwanto </h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309520</li>
+                                    <li><b>Rombel : </b>DKV XI-2  </li>
+                                    <li><b>TTL : </b>Pemalang, 12 April 2008 </li>
+                                    <li><b>Alamat Lengkap : </b>Vila Mutiara Gading 2, Tambun Utara, Bekasi</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/azzahra.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Azzahra Aprilliana Achdiat </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Azzahra Aprilliana Achdiat</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309562</li>
+                                    <li><b>Rombel : </b>HTL XI-1</li>
+                                    <li><b>TTL : </b>Bogor, 10-04-2008</li>
+                                    <li><b>Alamat Lengkap : </b>Kp. Tarikolot RT. 1 RW. 5 Ds./kel. Gunung Batu, Bogor Barat 16118.</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/tyo.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Muhammad Tyo Nugraha </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Muhammad Tyo Nugraha</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309901</li>
+                                    <li><b>Rombel : </b>TJKT XI-1</li>
+                                    <li><b>TTL : </b>Bogor, 22-4-2008</li>
+                                    <li><b>Alamat Lengkap : </b>Jl. Ciapus, Gang bebas Rt02/08, Kec. Ciomas</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/ova.jpeg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Zalovaurora Ayunei Heren </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Zalovaurora Ayunei Heren</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12310121</li>
+                                    <li><b>Rombel : </b>DKV XI-3</li>
+                                    <li><b>TTL : </b>Bogor, 15 Januari 2008/li>
+                                    <li><b>Alamat Lengkap : </b>Jalan Nurkim Kp Cibogel Kel. Kota Batu Kec. Ciomas Kabupaten Bogor</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/adnan.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Adnan Anugrah </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Adnan Anugrah</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309494</li>
+                                    <li><b>Rombel : </b>HTL XI-2</li>
+                                    <li><b>TTL : </b>Cijeruk, 28 januari 2008</li>
+                                    <li><b>Alamat Lengkap : </b>Jln.sukabakti kp cijeruk rt 3 rw 5</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/dipa.jpeg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Muhammad pradipa</a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Muhammad pradipa</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309888</li>
+                                    <li><b>Rombel : </b>KLN XI-1</li>
+                                    <li><b>TTL : </b>Banjarmasin, 8 Januari 2008</li>
+                                    <li><b>Alamat Lengkap : </b>Jl. Mayjend Ishak Djuarsa Gg. Rante RT.01/RW.07 no.38 </li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/maylicca.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Maylicca Namira Putri </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Maylicca Namira Putrit</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309736</li>
+                                    <li><b>Rombel : </b>KLN XI-1</li>
+                                    <li><b>TTL : </b>Bogor, 20 Mei 2024</li>
+                                    <li><b>Alamat Lengkap : </b>Asrama Yonif Linud 328 Rt. 3 Rw. 4 No. 4 Ds./Kel. Cilodong Kec. Cilodong.</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item male" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/ical.jpg" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Muhammad Faisal Maliki </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Muhammad Faisal Maliki</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12309848</li>
+                                    <li><b>Rombel : </b>PPLG XI-1</li>
+                                    <li><b>TTL : </b>Depok, 20 Feb 2006</li>
+                                    <li><b>Alamat Lengkap : </b>jln.pramuka raya Rt.01/11 kec. Pancoran mas kel. Mampang kota. Depok Prov. Jabar.</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                         <!-- Item 12 (female) -->
+                         <div class="col-lg-6 col-xl-3 wow fadeInUp training-item female" data-wow-delay="0.1s">
+                            <div class="training-inner">
+                                <img src="img/yasmin.webp" class="img-fixed w-100 rounded" alt="Image">
+                                <div class="training-title-name">
+                                    <a href="#" class="h4 text-white mb-0">Yasmin Qurrota A'yuni </a>
+                                </div>
+                            </div>
+                            <div class="training-content bg-secondary rounded-bottom p-4">
+                                <a href="#"><h4 class="text-white text-center">Yasmin Qurrota A'yuni</h4></a>
+                                <ul class="text-start text-white">
+                                    <li><b>NIS : </b>12310107</li>
+                                    <li><b>Rombel : </b>MPLB XI-2/li>
+                                    <li><b>TTL : </b>Bogor, 24 Juni 2008/li>
+                                    <li><b>Alamat Lengkap : </b>Jl.Ciapus Kompas, Rt 02/01 No.58 Desa Sukaluyu Kecamatan Tamansari.</li>
+                                </ul>
+                                <button class="btn-read-more" onclick="redirectToDetails(this)">
+                                    Read More <i class="fa fa-arrow-right"></i>
+                                </button>                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Training End -->
+
+        <!-- Footer Start -->
+        <!-- <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Contact Info</h4>
+                            <a href=""><i class="fa fa-map-marker-alt me-2"></i> 123 Street, New York, USA</a>
+                            <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
+                            <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
+                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-share fa-2x text-secondary me-2"></i>
+                                <a class="btn mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                <a class="btn mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Opening Time</h4>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Mon - Friday:</h6>
+                                <p class="text-white mb-0">09.00 am to 07.00 pm</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Satday:</h6>
+                                <p class="text-white mb-0">10.00 am to 05.00 pm</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6 class="text-muted mb-0">Vacation:</h6>
+                                <p class="text-white mb-0">All Sunday is our vacation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-secondary mb-4">Our Services</h4>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Business</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Evaluation</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Migrate</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Study</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Counselling</a>
+                            <a href="#" class=""><i class="fas fa-angle-right me-2"></i> Work / Career</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item">
+                            <h4 class="text-secondary mb-4">Newsletter</h4>
+                            <p class="text-white mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="position-relative mx-auto rounded-pill">
+                                <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <!-- <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-white"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-white"> -->
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        <!-- Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Copyright End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        function filterItems(category) {
+            const items = document.querySelectorAll('.training-item');
+            
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block'; // Show all items
+                } else if (item.classList.contains(category)) {
+                    item.style.display = 'block'; // Show matching category
+                } else {
+                    item.style.display = 'none'; // Hide non-matching items
+                }
+            });
+        }
+        function redirectToDetails(button) {
+            const card = button.closest('.training-item'); // Ambil elemen card terdekat
+            const image = card.querySelector('img').getAttribute('src'); // Ambil URL gambar
+            const name = card.querySelector('.training-title-name a').textContent.trim();
+            const nis = card.querySelector('ul li:nth-child(1)').textContent.split(':')[1].trim();
+            const rombel = card.querySelector('ul li:nth-child(2)').textContent.split(':')[1].trim();
+            const ttl = card.querySelector('ul li:nth-child(3)').textContent.split(':')[1].trim();
+            const address = card.querySelector('ul li:nth-child(4)').textContent.split(':')[1].trim();
+        
+            // Redirect ke halaman detail dengan parameter
+            window.location.href = `details11.html?image=${encodeURIComponent(image)}&name=${encodeURIComponent(name)}&nis=${encodeURIComponent(nis)}&rombel=${encodeURIComponent(rombel)}&ttl=${encodeURIComponent(ttl)}&address=${encodeURIComponent(address)}`;
+        }
+        const params = new URLSearchParams(window.location.search);
+        const searchValue = params.get('search') ? params.get('search').toLowerCase() : '';
+      
+        if (searchValue) {
+          const items = document.querySelectorAll('.training-item'); // Semua elemen yang akan difilter
+      
+          items.forEach(item => {
+            const itemName = item.querySelector('.training-title-name a');
+            const textContent = itemName.textContent;
+      
+            if (textContent.toLowerCase().includes(searchValue)) {
+              item.style.display = 'block'; // Tampilkan jika cocok
+      
+              // Highlight kata yang sesuai
+              const regex = new RegExp(`(${searchValue})`, 'gi'); // Buat regex untuk kata kunci
+              itemName.innerHTML = textContent.replace(regex, '<span class="highlight">$1</span>');
+            } else {
+              item.style.display = 'none'; // Sembunyikan jika tidak cocok
+            }
+          });
+        }
+      
+        // Tambahkan gaya untuk highlight
+        const style = document.createElement('style');
+        style.innerHTML = `
+          .highlight {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+          }
+        `;
+        document.head.appendChild(style);
+        function countWordOccurrences(page, word) {
+            // Simulate page content (you would replace this with the actual content of the page)
+            const pageContent = page === 'kelas 11' ? document.body.innerText : document.body.innerText;
+    
+            // Count the occurrences of the word in the page content
+            const regex = new RegExp(word, 'gi');
+            const matches = pageContent.match(regex);
+            return matches ? matches.length : 0;
+        }
+        async function redirectToSearchPage() {
+            const searchValue = document.getElementById('searchInput').value.trim();
+        
+            if (searchValue) {
+                const searchQuery = encodeURIComponent(searchValue);
+        
+                // Fetch konten dari kedua halaman
+                const [kelas11Content, trainingContent] = await Promise.all([
+                    fetchContent('kelas11.html'),
+                    fetchContent('training.html')
+                ]);
+        
+                // Hitung jumlah kemunculan kata di masing-masing halaman
+                const occurrencesKelas11 = countWordOccurrences(kelas11Content, searchValue);
+                const occurrencesTraining = countWordOccurrences(trainingContent, searchValue);
+        
+                // Tampilkan hasil pencarian dengan SweetAlert2
+                Swal.fire({
+                    title: 'Search Results',
+                    html: `<p>The search term <strong>"${searchValue}"</strong> was found:</p>
+                           <ul style="text-align: left;">
+                               <li><strong>On kelas11.html:</strong> ${occurrencesKelas11} times</li>
+                               <li><strong>On training.html:</strong> ${occurrencesTraining} times</li>
+                           </ul>`,
+                    icon: 'info',
+                    showCancelButton: true,
+                    cancelButtonText: 'Go to Kelas 10',
+                    confirmButtonText: 'Go to Kelas 11',
+                }).then((result) => {
+                    // Redirect ke halaman sesuai tombol yang dipilih
+                    if (result.isConfirmed) {
+                        window.location.href = `kelas11.html?search=${searchQuery}`;
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        window.location.href = `training.html?search=${searchQuery}`;
+                    } else {
+                        window.location.href = `index.html?search=${searchQuery}`;
+                    }
+                }); 
+            } else {
+                // Tampilkan alert jika input kosong
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Please enter a search term.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+        
+        // Fungsi untuk mengambil konten dari URL tertentu
+        async function fetchContent(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    console.error(`Failed to fetch ${url}:`, response.statusText);
+                    return '';
+                }
+                return await response.text();
+            } catch (error) {
+                console.error(`Error fetching ${url}:`, error);
+                return '';
+            }
+        }
+        
+    </script>
+    </body>
+
+</html>
