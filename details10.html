@@ -5,7 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detail Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      #container {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+      }
+    
+      #galleryView {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+      }
+    
+      .navBtns {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    
+      .navBtns:hover {
+        background-color: #0056b3;
+      }
+    
+      #tilesView {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    
+      .tile-image {
+        width: 100px;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+    
+      #tilesContainer p {
+        color: #555;
+        font-size: 16px;
+      }
+    </style>
+    
+    
+
 </head>
+
 <body>
   <div class="container py-5">
     <!-- Gambar di Tengah -->
@@ -41,13 +90,47 @@
             </tr>
           </tbody>
         </table>
-        <div class="text-center">
-          <a href="training.html" class="btn btn-primary mt-3">Kembali</a>
-        </div>
       </div>
     </div>
   </div>
-
+  
+  <div id="container">
+    <div id="toggleContainer">
+      <label for="viewToggle">Sertifikat</label>
+      <div id="toggle">
+        <div id="outer3">
+          <div id="slider3"></div>
+        </div>
+        <label for="viewToggle">Kebanggaan</label>
+      </div>
+    </div>
+  
+    <div id="galleryView">
+      <div id="galleryContainer">
+        <button id="navLeft" class="navBtns">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <a id="linkTag">
+          <div id="mainView"></div>
+        </a>
+        <button id="navRight" class="navBtns">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  
+    <div id="tilesView">
+      <div id="tilesContainer"></div>
+    </div>
+  </div>
+  
+    <div id="tilesView">
+      <div id="tilesContainer"></div>
+    </div>
+  </div>
+  <div class="text-center">
+    <a href="training.html" class="btn btn-primary mt-3">Kembali</a>
+  </div>
   <script>
     // Ambil parameter dari URL
     const params = new URLSearchParams(window.location.search);
@@ -57,8 +140,24 @@
     const rombel = params.get('rombel');
     const ttl = params.get('ttl');
     const address = params.get('address');
+    const certificates = params.get('certificates')?.split(',') || []; // Ambil daftar gambar sertifikat dari URL
+
+    const tilesContainer = document.getElementById('tilesContainer');
+    if (certificates.length > 0) {
+      certificates.forEach((img) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = img.trim(); // Gunakan URL gambar
+        imgElement.alt = 'Certificate';
+        imgElement.className = 'tile-image';
+        tilesContainer.appendChild(imgElement);
+      });
+    } else {
+      tilesContainer.innerHTML = '<p>No certificates available.</p>';
+    }
+     
+   
     
-    // Update elemen dengan data dari URL
+    // Update elemen detail
     document.getElementById('detailImage').src = image || 'default.jpg';
     document.getElementById('detailImage').alt = name || 'Detail';
     document.getElementById('detailName').textContent = name || '-';
@@ -66,7 +165,47 @@
     document.getElementById('detailRombel').textContent = rombel || '-';
     document.getElementById('detailTtl').textContent = ttl || '-';
     document.getElementById('detailAddress').textContent = address || '-';
+
+    const mainView = document.getElementById('mainView');
+    const navLeft = document.getElementById('navLeft');
+    const navRight = document.getElementById('navRight');
+    let currentIndex = 0;
+  
+    function updateMainView() {
+      if (certificates.length > 0) {
+        mainView.style.backgroundImage = `url(${certificates[currentIndex]})`;
+        mainView.style.backgroundSize = 'contain';
+        mainView.style.backgroundRepeat = 'no-repeat';
+        mainView.style.backgroundPosition = 'center';
+        mainView.style.height = '300px';
+        mainView.style.width = '500px';
+      } else {
+        mainView.innerHTML = '<p>No certificates available.</p>';
+      }
+    }
+  
+    navLeft.addEventListener('click', () => {
+      if (certificates.length > 0) {
+        currentIndex = (currentIndex - 1 + certificates.length) % certificates.length;
+        updateMainView();
+      }
+    });
+  
+    navRight.addEventListener('click', () => {
+      if (certificates.length > 0) {
+        currentIndex = (currentIndex + 1) % certificates.length;
+        updateMainView();
+      }
+    });
+  
+    // Inisialisasi tampilan utama
+    updateMainView();
     
+    // Tambahkan event listener untuk tombol lainnya
+    document.getElementById('outer3').addEventListener('click', toggleState3);
+    
+    // Fungsi toggleState3
+
   </script>
 </body>
 </html>

@@ -204,8 +204,10 @@
                                     <li><b>TTL : </b>Pulau Pinang, 7-Juni-2009</li>
                                     <li><b>Alamat Lengkap : </b>Desa Pulau Pinang, Rt. 01, Kec. Kembang Janggut, Kab. Kutai Kartanegara, Prov. Kalimantan Timur </li>
                                 </ul>
-                                <div class="certifikat">
-                                    <img src="" alt="">
+                                <div class="certifikat" style="display: none;">
+                                    <img src="img/jeanecasertif1.png" alt="Certifikat 1">
+                                    <img src="img/jeanecasertif2.png" alt="Certifikat 1">
+                                    <img src="img/jeanecasertif3.png" alt="Certifikat 1">
                                 </div>
                                 <button class="btn-read-more" onclick="redirectToDetails(this)">
                                     Read More <i class="fa fa-arrow-right"></i>
@@ -580,7 +582,13 @@
             const rombel = card.querySelector('ul li:nth-child(2)').textContent.split(':')[1].trim();
             const ttl = card.querySelector('ul li:nth-child(3)').textContent.split(':')[1].trim();
             const address = card.querySelector('ul li:nth-child(4)').textContent.split(':')[1].trim();
+
+            const certifikatImages = Array.from(
+                card.querySelectorAll('.certifikat img')
+            ).map(img => img.getAttribute('src')); // Ambil atribut src dari semua gambar
         
+            // Gabungkan URL gambar sertifikat menjadi string dengan pemisah (misalnya koma)
+            const certifikatImagesString = certifikatImages.join(',');
             // Redirect ke halaman detail dengan parameter
             window.location.href = `details10.html?image=${encodeURIComponent(image)}&name=${encodeURIComponent(name)}&nis=${encodeURIComponent(nis)}&rombel=${encodeURIComponent(rombel)}&ttl=${encodeURIComponent(ttl)}&address=${encodeURIComponent(address)}`;
         }

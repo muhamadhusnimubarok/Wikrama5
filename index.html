@@ -60,6 +60,10 @@
                     opacity: 0;
                 }
             }
+            #map {
+                height: 100vh;
+                width: 100%;
+            }
             
         </style>
     </head>
@@ -132,7 +136,7 @@
                                 <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.3s">Welcome to our Rayon Website <span style="color: #FF0000;">Wikrama 5</span></h1>
                                 <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">"Kami adalah rayon dengan ciri khas unik, di mana rata-rata siswa kami menempuh perjalanan terjauh untuk mencapai SMK Wikrama, namun semangat dan dedikasi mereka tetap membara untuk meraih masa depan yang gemilang." 
                                 </p>
-                                <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="#">More Details</a>
+                                <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="index.html">More Details</a>
                             </div>
                         </div>
                     </div>
@@ -144,7 +148,19 @@
                                 <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.3s">Welcome to our Rayon Website</h1>
                                 <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">"Kami adalah rayon dengan ciri khas unik, di mana rata-rata siswa kami menempuh perjalanan terjauh untuk mencapai SMK Wikrama, namun semangat dan dedikasi mereka tetap membara untuk meraih masa depan yang gemilang."
                                 </p>
-                                <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="#">More Details</a>
+                                <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="index.html">More Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/batik.jpg" class="img-fluid" alt="Image">
+                        <div class="carousel-caption">
+                            <div class="text-center p-4" style="max-width: 900px;">
+                                <h5 class="text-white text-uppercase fw-bold mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.1s">"Menjadi Tauladan"</h5>
+                                <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.3s">Welcome to our Rayon Website</h1>
+                                <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">"Kami adalah rayon dengan ciri khas unik, di mana rata-rata siswa kami menempuh perjalanan terjauh untuk mencapai SMK Wikrama, namun semangat dan dedikasi mereka tetap membara untuk meraih masa depan yang gemilang."
+                                </p>
+                                <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="index.html">More Details</a>
                             </div>
                         </div>
                     </div>
@@ -157,6 +173,10 @@
                     <span class="carousel-control-next-icon bg-secondary wow fadeInRight" data-wow-delay="0.2s" aria-hidden="false"></span>
                     <span class="visually-hidden-focusable">Next</span>
                 </button>
+                <!-- <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-secondary wow fadeInRight" data-wow-delay="0.2s" aria-hidden="false"></span>
+                    <span class="visually-hidden-focusable">Next</span>
+                </button> -->
             </div>
         </div>
         <!-- Jumbotron End -->
@@ -1119,6 +1139,14 @@
             </div>
         </div>
       -->
+      <h1>Penyebaran Anggota</h1>
+      <iframe 
+      src="https://www.google.com/maps/d/u/0/embed?mid=1UtBT-JDAUVdPMY7N3P_KWZcXpXGjdhs" 
+      width="100%" 
+      height="500px" 
+      style="border:0;">
+  </iframe>
+      <div id="map"></div>
  
 
         <!-- Back to Top -->
@@ -1134,6 +1162,8 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" 
+            async defer></script>
 
     
 
@@ -1294,6 +1324,26 @@
                 Swal.fire('Easter Egg telah dihapus!');
             });
         });
+
+        function initMap() {
+            // Lokasi tengah peta (opsional)
+            const centerLocation = { lat: 0.33976, lng: 111.47089 };
+
+            // Buat peta
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: centerLocation,
+            });
+
+            // URL KML dari Google My Maps
+            const kmlUrl = "https://www.google.com/maps/d/kml?mid=1UtBT-JDAUVdPMY7N3P_KWZcXpXGjdhs";
+
+            // Tambahkan KML Layer ke peta
+            const kmlLayer = new google.maps.KmlLayer({
+                url: kmlUrl,
+                map: map,
+            });
+        }
 
     </script>
     
